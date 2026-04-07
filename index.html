@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>كشتة - حيث تبدأ حكاية الصحراء</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Tajawal:wght@400;500;700;800&family=Manrope:wght@400;600&family=Cairo:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#e9c176",
+                        "secondary-fixed-dim": "#ffb783",
+                        "on-background": "#1c1c17",
+                        "primary": "#ab3430",
+                        "surface": "#fdf9f1",
+                        "on-surface": "#1c1c17",
+                        "primary-container": "#f46961",
+                        "secondary": "#944a00",
+                        "surface-container-low": "#f7f3eb",
+                        "surface-container-highest": "#e6e2da",
+                        "surface-dim": "#dddad2",
+                        "dark-surface": "#121212",
+                        "dark-glass": "rgba(28, 28, 23, 0.7)"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans", "Tajawal"],
+                        "body": ["Manrope", "Cairo"],
+                        "label": ["Plus Jakarta Sans", "Tajawal"]
+                    },
+                    "keyframes": {
+                        "bounce-subtle": {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(5%)' },
+                        }
+                    },
+                    "animation": {
+                        "bounce-subtle": "bounce-subtle 3s ease-in-out infinite",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #fdf9f1;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(18, 18, 18, 1) 100%);
+        }
+
+        /* Glassmorphism Classes */
+        .glass-dark {
+            background: rgba(18, 18, 18, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(253, 249, 241, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(134, 115, 103, 0.15);
+            box-shadow: 0 40px 60px -15px rgba(28, 28, 23, 0.06);
+        }
+
+        .editorial-shadow {
+            box-shadow: 0 40px 60px -15px rgba(28, 28, 23, 0.08);
+        }
+
+        /* Interactive Hovers */
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(28, 28, 23, 0.15);
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(171, 52, 48, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Premium Text Gradient */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Ambient Glow behind text */
+        .glow-text {
+            text-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body class="text-on-surface overflow-x-hidden">
+
+    <!-- Premium Dark TopNavBar Shell -->
+    <nav class="fixed top-0 w-full z-50 glass-dark transition-all duration-300" id="navbar">
+        <div class="flex justify-between items-center px-8 py-4 w-full max-w-full rtl">
+            <div class="flex items-center gap-3">
+                <img src="./logo.svg" alt="كشتة" class="h-10 md:h-12 w-auto" />
+            </div>
+            <div class="hidden lg:flex items-center gap-10">
+                <a class="text-white/90 hover:text-white border-b-2 border-primary font-bold text-lg transition-colors"
+                    href="#">التجارب</a>
+                <a class="text-white/60 hover:text-white transition-colors duration-300 font-bold text-lg"
+                    href="#activities">الأنشطة</a>
+                <a class="text-white/60 hover:text-white transition-colors duration-300 font-bold text-lg"
+                    href="#pricing">الباقات</a>
+                <a class="text-white/60 hover:text-white transition-colors duration-300 font-bold text-lg"
+                    href="#contact">تواصل معنا</a>
+            </div>
+            <button
+                class="bg-gradient-to-r from-primary to-[#cc423d] text-white px-8 py-3 rounded-full font-bold text-sm tracking-wide glow-button transition-all">احجز
+                خيمتك</button>
+        </div>
+    </nav>
+
+    <!-- Ultra-Immersive Dark Hero Section -->
+    <section class="relative h-screen min-h-[850px] flex items-center justify-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover object-bottom"
+                alt="Wide shot of Saudi desert dunes at sunset with deep orange sky"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-xiIA7i7sMPaHk_aP9KasvQ5UKFkzfCth4O8r7TnXBB6aQdytyfuWE6vKX9ZwxFTJdRu3gBJr3s1Ydn1pfvmgY8T3XhTHwuctXqpev5RTrqlRQuMLcAXtYAwkP8u3YaFWH7jjYUA7fdy4sZM7XKm6KqYUy1UBNZDCs95Ie39WKqoBwDxkFOzRfU7ifjUowyk_ZrMRXstXIOo0MF1Binwfb7nltaYQw7AIGN_UskmGijkhrtbGOs3qOiycNzfU5mpdY8-8Ia59YjLq" />
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div
+            class="relative z-10 container mx-auto px-6 text-center md:text-right rtl flex flex-col items-center md:items-start mt-20">
+            <div class="max-w-5xl" data-aos="fade-up" data-aos-duration="1200">
+                <span
+                    class="text-secondary-fixed-dim uppercase tracking-[0.3em] font-bold text-sm md:text-base mb-6 block drop-shadow-md">الرحلة
+                    الفاخرة للصحراء</span>
+                <h1
+                    class="text-6xl md:text-8xl lg:text-[7.5rem] font-extrabold text-white mb-8 leading-[1.1] font-headline tracking-tighter glow-text">
+                    أصالة <span class="text-gradient-gold">الصحراء</span><br>برونق عصري</h1>
+                <p class="text-xl md:text-3xl text-white/80 mb-12 leading-relaxed font-body max-w-3xl glow-text font-light"
+                    data-aos="fade-up" data-aos-delay="200">استمتع بتجربة تخييم فريدة تحت سماء مرصعة بالنجوم، حيث تلتقي
+                    الضيافة السعودية الأصيلة بالرفاهية المطلقة.</p>
+
+                <div class="flex flex-col sm:flex-row gap-6 mt-8" data-aos="fade-up" data-aos-delay="400">
+                    <button
+                        class="bg-gradient-to-r from-primary to-[#d34741] text-white px-12 py-5 rounded-full text-xl font-bold glow-button transition-all flex items-center justify-center gap-3">
+                        احجز الآن
+                        <span class="material-symbols-outlined" data-icon="arrow_left_alt">arrow_left_alt</span>
+                    </button>
+                    <button
+                        class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-12 py-5 rounded-full text-xl font-bold hover:bg-white/20 transition-all">
+                        استكشف الأنشطة
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scrolling Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center animate-bounce-subtle">
+            <span class="text-white/50 text-xs tracking-widest uppercase mb-2">اكتشف المزيد</span>
+            <span class="material-symbols-outlined text-white/50 text-3xl">keyboard_arrow_down</span>
+        </div>
+    </section>
+
+    <!-- The Transition: Dark to Light -->
+    <div class="h-48 bg-gradient-to-b from-[#121212] to-surface w-full"></div>
+
+    <!-- Experiences Section: Zigzag Layout -->
+    <section class="py-20 bg-surface">
+        <div class="container mx-auto px-8 max-w-7xl">
+            <!-- ZigZag 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-32">
+                <div data-aos="fade-left" data-aos-duration="1000">
+                    <div class="relative rounded-[2rem] overflow-hidden group hover-lift shadow-2xl">
+                        <img class="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+                            alt="Traditional luxury desert tent"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSrncI2b9bT81sWe-U3dY2fZcTm4l3qD4ca1aHpFXOxWE0dG8xNlX9tAbTuDIq-3IIhv3TlV8Eqs7U6BiaYn3ROslbOEgxh6bS3UIrMzbFIeM2JVpNFV0pEBssvx_Us9skmZ0ltQ26gUGGLQhtelDCaNDnEaOroD6pahUqcZppZH0ezvMS0OaJ0FuCVDWu5hjGEU19Nsnm-C4ZWfW1x_O8hnMB-QFGNbTrdjJBA_PRoGZ_rKTA7EpmprqZ0BCkw6rorM7GsW5JJodI" />
+                        <!-- Floating Glass Card -->
+                        <div
+                            class="absolute bottom-6 right-6 left-6 p-6 glass-card rounded-2xl flex items-center justify-between">
+                            <div>
+                                <p class="font-bold text-lg text-primary">الخيمة الملكية</p>
+                                <p class="text-on-surface/70 text-sm">مجهزة بأعلى معايير الراحة</p>
+                            </div>
+                            <span
+                                class="bg-primary/10 p-3 rounded-full material-symbols-outlined text-primary">chair</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <span class="text-secondary font-bold tracking-widest uppercase mb-4 block flex items-center gap-2">
+                        <span class="w-12 h-px bg-secondary inline-block"></span>
+                        الضيافة الأصيلة
+                    </span>
+                    <h2 class="text-5xl md:text-6xl font-bold mb-8 font-headline leading-tight text-on-surface">تجربة
+                        تجمع بين العراقة والرفاهية</h2>
+                    <p class="text-xl text-on-surface/70 leading-relaxed mb-10 font-light">نقدم لكم في "كشتة" تجربة
+                        تتجاوز مجرد التخييم. انغمس في رائحة القهوة السعودية الأصيلة واستمتع بجلسات الشواء الفاخرة تحت
+                        سقف السماء الرحبة، حيث نهتم بكل تفاصيل راحتكم.</p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <div
+                            class="bg-surface-container-highest px-6 py-3 rounded-full border border-outline/10 flex items-center gap-3 hover:border-primary transition-all cursor-pointer">
+                            <span class="material-symbols-outlined text-primary" data-icon="coffee">coffee</span>
+                            <span class="font-bold text-on-surface">قهوة مقندة</span>
+                        </div>
+                        <div
+                            class="bg-surface-container-highest px-6 py-3 rounded-full border border-outline/10 flex items-center gap-3 hover:border-secondary transition-all cursor-pointer">
+                            <span class="material-symbols-outlined text-secondary"
+                                data-icon="outdoor_grill">outdoor_grill</span>
+                            <span class="font-bold text-on-surface">شواء فاخر</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZigZag 2 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div class="order-2 lg:order-1" data-aos="fade-left" data-aos-duration="1000">
+                    <span class="text-primary font-bold tracking-widest uppercase mb-4 block flex items-center gap-2">
+                        <span class="w-12 h-px bg-primary inline-block"></span>
+                        ليالي السمر
+                    </span>
+                    <h2 class="text-5xl md:text-6xl font-bold mb-8 font-headline leading-tight text-on-surface">تحت غطاء
+                        النجوم الساحر</h2>
+                    <p class="text-xl text-on-surface/70 leading-relaxed mb-10 font-light">بعيداً عن صخب المدينة
+                        وأضوائها، نوفر لك مساحات هادئة لتأمل السماء والاستمتاع بحكايات الليل حول النيران المشتعلة مع
+                        أحبائك.</p>
+                    <a href="#activities"
+                        class="text-primary border-b-2 border-primary font-bold text-lg inline-flex items-center gap-2 pb-1 hover:text-primary-container transition-colors">
+                        استكشف جدول الأنشطة
+                        <span class="material-symbols-outlined">arrow_left_alt</span>
+                    </a>
+                </div>
+
+                <div class="order-1 lg:order-2" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="relative rounded-[2rem] overflow-hidden group hover-lift shadow-2xl">
+                        <img class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                            alt="Night campfire in desert"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIEnsBc8mB_a-O4GfBsV4qecYgg66CJDQ-BO3BciK4P7sRsnxxJkx3Tdjy4behSI6Rjpdht9I0lJTXDJYUgt86rlSbNRO3C9DMK_tptB5ydx1CZ5qJl4706LQaKXksOWovnZQdIps0BY5l2PI4QpDDKSKJr7FB8U_aS38_J37AAjyn1a3oT4j6ADNz2P2mzHwA4snwV8iSPINLeiHvejf4F775sqp2AD-xdAtFsMkS2Fm8cPQVkXnFkL-96J69BAWiVvWbU0NsYX1y" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section: Enhanced Bento Grid -->
+    <section class="py-24 bg-surface-container-low">
+        <div class="container mx-auto px-8 max-w-7xl">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-headline">مستهدفات رؤية 2030 للبيئة</h2>
+                <p class="text-xl text-on-surface/60 max-w-3xl mx-auto font-light">نلتزم في كشتة بأعلى معايير الحفاظ على
+                    البيئة الطبيعية واستدامة مواردنا، لتظل صحراؤنا نابضة بالحياة.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-delay="200">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm border border-transparent hover:border-secondary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div
+                        class="bg-[#fff4eb] w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-secondary text-3xl" data-icon="forest">forest</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-on-surface font-headline">منع الرعي الجائر</h3>
+                    <p class="text-on-surface/60 leading-relaxed font-light">حماية الغطاء النباتي الطبيعي لضمان توازن
+                        النظام البيئي الصحراوي.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm border border-transparent hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div
+                        class="bg-[#fceeed] w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary text-3xl" data-icon="block">block</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-on-surface font-headline">منع الاحتطاب</h3>
+                    <p class="text-on-surface/60 leading-relaxed font-light">المساهمة في مبادرة السعودية الخضراء عبر
+                        حماية الأشجار البرية النادرة.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm border border-transparent hover:border-secondary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div
+                        class="bg-[#fff4eb] w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-secondary text-3xl"
+                            data-icon="clean_hands">clean_hands</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-on-surface font-headline">الحفاظ على النظافة</h3>
+                    <p class="text-on-surface/60 leading-relaxed font-light">سياسة "لا تترك أثراً" لضمان بقاء الصحراء
+                        نقية كما وجدناها للجيل القادم.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm border border-transparent hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div
+                        class="bg-[#fceeed] w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary text-3xl" data-icon="nature">nature</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-4 text-on-surface font-headline">تنمية الغطاء</h3>
+                    <p class="text-on-surface/60 leading-relaxed font-light">دعم استعادة الحياة الفطرية وزيادة المسطحات
+                        الخضراء الطبيعية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section: Modern Interactive Cards Instead of Table -->
+    <section id="activities" class="py-32 bg-surface">
+        <div class="container mx-auto px-8 max-w-5xl">
+            <div class="text-center block mb-20" data-aos="fade-up">
+                <span class="text-primary font-bold tracking-widest uppercase mb-4 block">البرنامج الترفيهي</span>
+                <h2 class="text-5xl font-bold font-headline mb-6 text-on-surface">جدول أنشطة كشته</h2>
+                <p class="text-xl text-on-surface/60 font-light">فعاليات متنوعة تناسب جميع أفراد العائلة طوال الوقت.</p>
+            </div>
+
+            <div class="flex flex-col gap-6" data-aos="fade-up" data-aos-delay="200">
+                <!-- Activity 1 -->
+                <div
+                    class="bg-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-xl hover:-translate-y-1 transition-all border border-outline/5 cursor-pointer group">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="bg-surface-container-highest w-16 h-16 rounded-xl flex items-center justify-center text-on-surface group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">wb_twilight</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold font-headline text-on-surface mb-1">الاستقبال والضيافة</h3>
+                            <p class="text-on-surface/60">قهوة دافئة وترحيب سعودي أصيل في الخيمة الرئيسية.</p>
+                        </div>
+                    </div>
+                    <div class="text-right shrink-0 bg-surface px-6 py-4 rounded-xl w-full md:w-auto">
+                        <p class="text-primary font-bold text-lg">04:00 م - 05:30 م</p>
+                        <p class="text-sm font-bold text-on-surface/50 mt-1 uppercase tracking-wider">عام</p>
+                    </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div
+                    class="bg-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-xl hover:-translate-y-1 transition-all border border-outline/5 cursor-pointer group">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="bg-surface-container-highest w-16 h-16 rounded-xl flex items-center justify-center text-on-surface group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">sports_esports</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold font-headline text-on-surface mb-1">مشاهدة الغروب وألعاب
+                                الطاولة</h3>
+                            <p class="text-on-surface/60">لحظات سحرية وسط الكثبان مع ألعاب جماعية ممتعة.</p>
+                        </div>
+                    </div>
+                    <div class="text-right shrink-0 bg-surface px-6 py-4 rounded-xl w-full md:w-auto">
+                        <p class="text-secondary font-bold text-lg">05:30 م - 07:00 م</p>
+                        <p class="text-sm font-bold text-on-surface/50 mt-1 uppercase tracking-wider">ترفيهي</p>
+                    </div>
+                </div>
+
+                <!-- Activity 3 -->
+                <div
+                    class="bg-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-xl hover:-translate-y-1 transition-all border border-outline/5 cursor-pointer group">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="bg-surface-container-highest w-16 h-16 rounded-xl flex items-center justify-center text-on-surface group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">kebab_dining</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold font-headline text-on-surface mb-1">مراسم الشواء التقليدية
+                            </h3>
+                            <p class="text-on-surface/60">بوفيه عشاء فاخر يعتمد على الوصفات والمكونات البرية.</p>
+                        </div>
+                    </div>
+                    <div class="text-right shrink-0 bg-surface px-6 py-4 rounded-xl w-full md:w-auto">
+                        <p class="text-primary font-bold text-lg">07:30 م - 09:30 م</p>
+                        <p class="text-sm font-bold text-on-surface/50 mt-1 uppercase tracking-wider">عشاء</p>
+                    </div>
+                </div>
+
+                <!-- Activity 4 -->
+                <div
+                    class="bg-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-xl hover:-translate-y-1 transition-all border border-outline/5 cursor-pointer group">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="bg-surface-container-highest w-16 h-16 rounded-xl flex items-center justify-center text-on-surface group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">nights_stay</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold font-headline text-on-surface mb-1">تأمل النجوم والسمر</h3>
+                            <p class="text-on-surface/60">جلسات هادئة للمشاهدة الفلكية وحكايات تحت النجوم.</p>
+                        </div>
+                    </div>
+                    <div class="text-right shrink-0 bg-surface px-6 py-4 rounded-xl w-full md:w-auto">
+                        <p class="text-secondary font-bold text-lg">09:30 م - 02:00 ص</p>
+                        <p class="text-sm font-bold text-on-surface/50 mt-1 uppercase tracking-wider">استرخاء</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section: Floating Luxury Cards -->
+    <section id="pricing" class="py-32 bg-dark-surface relative overflow-hidden">
+        <!-- Ambient dark background with geometric shapes or gradients could go here -->
+        <div
+            class="absolute top-0 left-0 w-full h-full opacity-30 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent">
+        </div>
+
+        <div class="container mx-auto px-8 max-w-6xl relative z-10">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-5xl font-bold font-headline mb-6 text-white text-gradient-gold">باقات الحجز الفاخرة</h2>
+                <p class="text-xl text-white/60 font-light">اختر التجربة التي تلائم تطلعاتك. الأسعار تشمل ضريبة القيمة
+                    المضافة.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                <!-- Basic Entry Card -->
+                <div class="bg-[#1a1a1a] rounded-[2.5rem] p-10 md:p-14 border border-white/5 hover:border-secondary/30 transition-all hover-lift"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-3xl font-bold mb-3 text-white font-headline">بطاقة زيارة</h3>
+                    <p class="text-white/50 text-sm mb-10">للفرد الواحد بضيافة كاملة في المناطق المشتركة.</p>
+
+                    <div class="flex items-end gap-2 mb-10">
+                        <span class="text-6xl font-extrabold text-secondary">49</span>
+                        <span class="text-xl text-white/70 mb-2">ريال / يوم</span>
+                    </div>
+
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-secondary text-sm">check</span>
+                            </div>
+                            <span class="text-white/80 font-bold">دخول الموقع العام</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-secondary text-sm">check</span>
+                            </div>
+                            <span class="text-white/80 font-bold">قهوة وشاي طوال فترة الزيارة</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-secondary text-sm">check</span>
+                            </div>
+                            <span class="text-white/80 font-bold">المشاركة في الأنشطة والسمر</span>
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-full bg-transparent border border-white/20 text-white font-bold py-5 rounded-full hover:bg-white hover:text-black transition-all text-lg">اطلب
+                        بطاقتك</button>
+                </div>
+
+                <!-- Premium Luxury Tent Card (Darker, glowing) -->
+                <div class="bg-gradient-to-br from-[#2a1111] to-[#120a0a] rounded-[2.5rem] p-10 md:p-14 border border-primary/30 relative shadow-[0_0_50px_rgba(171,52,48,0.15)] hover:shadow-[0_0_80px_rgba(171,52,48,0.25)] transition-all transform lg:scale-105 z-20"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-[#ff6b62] text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap tracking-wider">
+                        تجربة الخصوصية التامة
+                    </div>
+
+                    <h3 class="text-3xl font-bold mb-3 text-white font-headline">الخيمة الملكية الخاصة</h3>
+                    <p class="text-white/50 text-sm mb-10">رفاهية للعائلات والمجموعات (تتسع لـ 6 أشخاص).</p>
+
+                    <div class="flex items-end gap-2 mb-10">
+                        <span class="text-6xl font-extrabold text-primary">400</span>
+                        <span class="text-xl text-white/70 mb-2">ريال / حجزة</span>
+                    </div>
+
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-[#ff8e88] text-sm">star</span>
+                            </div>
+                            <span class="text-white font-bold">خيمة مخملية مجهزة بالكامل</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-[#ff8e88] text-sm">outdoor_grill</span>
+                            </div>
+                            <span class="text-white font-bold">معدات شواء بخصوصية تامة</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-[#ff8e88] text-sm">deck</span>
+                            </div>
+                            <span class="text-white font-bold">جلسة خارجية خاصة مضاءة</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-[#ff8e88] text-sm">schedule</span>
+                            </div>
+                            <span class="text-white font-bold">وصول حصري من المـ 4ص إلى الـ 2ص</span>
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-full bg-gradient-to-r from-primary to-[#d34741] text-white font-bold py-5 rounded-full glow-button shadow-lg text-lg">احجز
+                        الخيمة الملكية</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer: Epic Dark Finish -->
+    <footer id="contact" class="bg-[#0a0a0a] pt-32 pb-12 relative overflow-hidden">
+        <!-- Subtle Logo Watermark in background -->
+        <div class="absolute -right-40 -top-20 opacity-[0.02] transform scale-150 pointer-events-none">
+            <img src="./logo.svg" alt="" class="w-[800px] h-auto" style="filter: brightness(0) invert(1);" />
+        </div>
+
+        <div class="container mx-auto px-8 max-w-7xl relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-8 border-b border-white/10 pb-20 mb-10">
+
+                <!-- Brand Column -->
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="./logo.svg" alt="كشتة" class="h-14 w-auto" />
+                        <div class="text-4xl font-bold text-white font-headline tracking-tighter">كشتة</div>
+                    </div>
+                    <p class="text-white/50 text-lg leading-relaxed max-w-sm mb-10 font-light">نعيد صياغة المعنى الحقيقي
+                        للسياحة الصحراوية بمعايير الفخامة والضيافة السعودية العريقة.</p>
+                    <div class="flex gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-colors cursor-pointer text-white">
+                            <span class="material-symbols-outlined">alternate_email</span>
+                        </div>
+                        <div
+                            class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-colors cursor-pointer text-white">
+                            <span class="material-symbols-outlined">phone</span>
+                        </div>
+                        <div
+                            class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-colors cursor-pointer text-white">
+                            <span class="material-symbols-outlined">location_on</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links Column -->
+                <div class="md:col-span-3">
+                    <h4 class="font-bold text-lg text-white mb-8 border-r-2 border-primary pr-4">روابط التصفح</h4>
+                    <div class="flex flex-col gap-5">
+                        <a class="text-white/60 hover:text-white transition-colors cursor-pointer" href="#">عن مسارنا
+                            الصحراوي</a>
+                        <a class="text-white/60 hover:text-white transition-colors cursor-pointer" href="#">تعليمات
+                            وإرشادات التخييم</a>
+                        <a class="text-white/60 hover:text-white transition-colors cursor-pointer" href="#">سياسة
+                            الخصوصية والاسترجاع</a>
+                        <a class="text-white/60 hover:text-white transition-colors cursor-pointer" href="#">أسئلة
+                            السائحين (FAQ)</a>
+                    </div>
+                </div>
+
+                <!-- Contact Box & Newsletter -->
+                <div class="md:col-span-4 bg-[#141414] p-8 rounded-3xl border border-white/5">
+                    <h4 class="font-bold text-lg text-white mb-6">النشرة الصحراوية</h4>
+                    <p class="text-white/50 text-sm mb-8 font-light">انضم إلى قائمتنا البريدية للحصول على دعوات لأمسيات
+                        فلكية وحفلات برية حصرية.</p>
+                    <div class="flex flex-col gap-4">
+                        <input
+                            class="bg-black/50 border border-white/10 rounded-xl px-5 py-4 w-full text-white focus:ring-2 focus:ring-primary focus:outline-none transition-all"
+                            placeholder="البريد الإلكتروني" type="email" />
+                        <button
+                            class="bg-white text-black px-6 py-4 rounded-xl font-bold w-full hover:bg-[#eaeaea] transition-colors">تأكيد
+                            الاشتراك</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-sm">
+                <p>© ٢٠٢٤ كشتة الفاخرة للرحلات - الرياض، المملكة العربية السعودية.</p>
+                <p>صُنع بكل فخر ليعكس التراث.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Navbar Scroll Script & AOS Initialization -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            offset: 80,
+            duration: 900,
+            easing: 'ease-out-cubic',
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-xl', 'border-b', 'border-white/10');
+                navbar.style.background = 'rgba(18, 18, 18, 0.85)';
+            } else {
+                navbar.classList.remove('shadow-xl', 'border-b', 'border-white/10');
+                navbar.style.background = 'rgba(18, 18, 18, 0.65)';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

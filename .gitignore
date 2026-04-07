@@ -1,0 +1,7 @@
+# Ignore everything in the directory
+*
+
+# Except for these required files
+!/index.html
+!/logo.svg
+!/.gitignore
